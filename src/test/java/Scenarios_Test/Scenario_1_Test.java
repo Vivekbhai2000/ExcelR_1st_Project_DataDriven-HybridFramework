@@ -17,11 +17,11 @@ public class Scenario_1_Test extends OHRMBase{
 	
 	@Test
 	public void S1() {
-		driver.findElement(By.xpath("//input[@name='username']")).sendKeys(prop.getProperty("Username"));
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(prop.getProperty("Password"));
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		driver.findElement(By.xpath("//span[@class='oxd-userdropdown-tab']")).click();
-		driver.findElement(By.xpath("//a[text()='Logout']")).click();
+		driver.findElement(By.xpath(prop.getProperty("Usernamexpath"))).sendKeys(prop.getProperty("Username"));
+		driver.findElement(By.xpath(prop.getProperty("Passwordxpath"))).sendKeys(prop.getProperty("Password"));
+		driver.findElement(By.xpath(prop.getProperty("Loginxpath"))).click();
+		driver.findElement(By.xpath(prop.getProperty("Logoutdropdownxpath"))).click();
+		driver.findElement(By.xpath(prop.getProperty("Logoutxpath"))).click();
 		System.out.println("Login And Logout Successfull");	
 	}
 	

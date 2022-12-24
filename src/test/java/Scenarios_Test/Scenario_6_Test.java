@@ -1,8 +1,10 @@
 package Scenarios_Test;
 
 import java.awt.AWTException;
-import java.time.Duration;
+import java.util.List;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -19,37 +21,34 @@ public class Scenario_6_Test extends OHRMBase{
 	
 	@Test
 	public void S6() throws AWTException {
-		driver.findElement(By.xpath("//input[@name='username']")).sendKeys(prop.getProperty("Username"));
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(prop.getProperty("Password"));
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		driver.findElement(By.xpath(prop.getProperty("Usernamexpath"))).sendKeys(prop.getProperty("Username"));
+		driver.findElement(By.xpath(prop.getProperty("Passwordxpath"))).sendKeys(prop.getProperty("Password"));
+		driver.findElement(By.xpath(prop.getProperty("Loginxpath"))).click();
 		System.out.println("1");
-		driver.findElement(By.xpath("//a[@href='/web/index.php/recruitment/viewRecruitmentModule']")).click();
+		driver.findElement(By.xpath(prop.getProperty("S5S6RecruitmentMenu"))).click();
 		System.out.println("2");
-		driver.findElement(By.xpath("//a[text()='Vacancies']")).click();
+		driver.findElement(By.xpath(prop.getProperty("S6VacanciesMenu"))).click();
 		System.out.println("3");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-		driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[1]/button")).click();
+		driver.findElement(By.xpath(prop.getProperty("S6AddVacancyButton"))).click();
 		System.out.println("4");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-		driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[1]/div/div[2]/input")).sendKeys(prop.getProperty("S6Name"));
+		driver.findElement(By.xpath(prop.getProperty("S6Namexpath"))).sendKeys(prop.getProperty("S6Name"));
 		System.out.println("5");
-		driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div/div[2]/div/div/div[2]/i")).click();
+		driver.findElement(By.xpath(prop.getProperty("S6JobTitiledropdownkeyxpath"))).click();
 		System.out.println("6");
-		
-//		Space for Dropdown
-//		WebElement JobTitle = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div/div[2]/div/div/div[2]"));
-//		JobTitle.click();
-//		System.out.println("gsvdhfvs");
-//		JobTitle.findElement(By.xpath("//div[text()='Chief Executive Officer']")).click();
-//		System.out.println("7");
-		
-		driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[2]/div/div/div[2]/textarea")).sendKeys(prop.getProperty("S6Description"));
+		List<WebElement> JobTitle = driver.findElements(By.xpath(prop.getProperty("S6JobTitilelistxpath")));
+		for (int i = 0; i<JobTitle.size(); i++) {
+			if (JobTitle.get(i).equals("Chief Executive Officer")) {
+				JobTitle.get(i).click();
+			}
+		}
+		System.out.println("7");
+		driver.findElement(By.xpath(prop.getProperty("S6Descriptionxpath"))).sendKeys(prop.getProperty("S6Description"));
 		System.out.println("8");
-		driver.findElement(By.xpath("//input[@placeholder='Type for hints...']")).sendKeys(prop.getProperty("S6HiringManager"));
+		driver.findElement(By.xpath(prop.getProperty("S6HiringManagerxpath"))).sendKeys(prop.getProperty("S6HiringManager"));
 		System.out.println("9");
-		driver.findElement(By.xpath("/html/body/div/div[1]/div[2]/div[2]/div/div/form/div[3]/div[2]/div/div/div/div[2]/input")).sendKeys(prop.getProperty("S6Position"));
+		driver.findElement(By.xpath(prop.getProperty("S6Positionxpath"))).sendKeys(prop.getProperty("S6Position"));
 		System.out.println("10");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		driver.findElement(By.xpath(prop.getProperty("S6Submitxpath"))).click();
 		System.out.println("Vacancy Details Added");
 	}
 	

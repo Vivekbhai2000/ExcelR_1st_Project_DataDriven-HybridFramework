@@ -17,10 +17,10 @@ public class Scenario_4_Test extends OHRMBase{
 	
 	@Test
 	public void S4() {
-		driver.findElement(By.xpath("//p[text()='Forgot your password? ']")).click();
-		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("vivek@123");
-		driver.findElement(By.xpath("//button[@type='submit']")).click();
-		driver.findElement(By.xpath("//h6[text()='Reset Password link sent successfully']")).isDisplayed();
+		driver.findElement(By.xpath(prop.getProperty("S4FYPxpath"))).click();
+		driver.findElement(By.xpath(prop.getProperty("S4Usernamexpath"))).sendKeys(prop.getProperty("S4Username"));
+		driver.findElement(By.xpath(prop.getProperty("S4Submitxpath"))).click();
+		driver.findElement(By.xpath(prop.getProperty("S4RPDisplayedxpath"))).isDisplayed();
 		System.out.println("Reset Password Done");
 	}
 	
